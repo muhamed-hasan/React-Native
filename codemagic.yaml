@@ -2,7 +2,7 @@ workflows:
   windows-build:
     name: Build Windows App
     environment:
-      node: 18.x
+      node: 20.x
     scripts:
       - npm install
       - npx react-native-windows-init --overwrite
