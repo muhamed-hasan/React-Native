@@ -1,5 +1,12 @@
 workflows:
-    sample-workflow:
-        name: Codemagic Sample Workflow
-        max_build_duration: 120
-        instance_type: mac_mini_m2
+  windows-build:
+    name: Windows Build
+    environment:
+      node: 18.x
+      os: windows
+      react-native-windows: true
+    scripts:
+      - npm install
+      - npm run windows --release
+    artifacts:
+      - windows/x64/Release/AppName/AppName.exe
