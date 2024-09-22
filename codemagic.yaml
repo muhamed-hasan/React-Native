@@ -2,7 +2,7 @@ workflows:
   windows-build:
     name: Build Windows App
     environment:
-      node: 16.x  # or use 'latest' if you want the latest version
+      node: latest  # or use 'latest' if you want the latest version
     scripts:
       - npm install
       # Download NuGet
