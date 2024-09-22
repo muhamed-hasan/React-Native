@@ -2,12 +2,14 @@ workflows:
   windows-build:
     name: Build Windows App
     environment:
-      node: latest
+      node: 16.x  # or use 'latest' if you want the latest version
     scripts:
       - npm install
-      - npx react-native-windows-init --overwrite
+      # Download NuGet
+      - curl -o nuget.exe https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
+      - mono nuget.exe restore windows/{AppName}.sln  # Replace {AppName} with your app's name
       - cd windows
-      - nuget restore
+      # Build the app using MSBuild
       - msbuild /p:Configuration=Release /p:Platform=x64 {AppName}.sln
     artifacts:
-      - windows/x64/Release/AppName/AppName.exe
+      - windows/x64/Release/{AppName}/{AppName}.exe
