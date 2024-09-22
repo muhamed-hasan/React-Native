@@ -1,12 +1,13 @@
 workflows:
   windows-build:
-    name: Windows Build
+    name: Build Windows App
     environment:
       node: 18.x
-      os: windows
-      react-native-windows: true
     scripts:
       - npm install
-      - npm run windows --release
+      - npx react-native-windows-init --overwrite
+      - cd windows
+      - nuget restore
+      - msbuild /p:Configuration=Release /p:Platform=x64 {AppName}.sln
     artifacts:
       - windows/x64/Release/AppName/AppName.exe
