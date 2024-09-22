@@ -7,9 +7,9 @@ workflows:
       - npm install
       # Download NuGet
       - curl -o nuget.exe https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
-      - mono nuget.exe restore windows/{AppName}.sln  # Replace {AppName} with your app's name
+      - mono nuget.exe restore windows/React-Native.sln  # Replace {AppName} with your app's name
       - cd windows
       # Build the app using MSBuild
-      - msbuild /p:Configuration=Release /p:Platform=x64 {AppName}.sln
+      - msbuild /p:Configuration=Release /p:Platform=x64 React-Native.sln
     artifacts:
-      - windows/x64/Release/{AppName}/{AppName}.exe
+      - windows/x64/Release/React-Native/React-Native.exe
